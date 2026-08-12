@@ -17,6 +17,7 @@ export interface Paciente {
 export class PacienteService {
   private apiUrl = 'https://clinica-backend-nzqw.onrender.com/api/pacientes';
 
+
   constructor(private http: HttpClient) { }
 
   getPacientes(): Observable<Paciente[]> {
