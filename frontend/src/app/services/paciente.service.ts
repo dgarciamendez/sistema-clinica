@@ -1,4 +1,5 @@
-﻿import { Injectable } from '@angular/core';
+﻿
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -16,7 +17,6 @@ export interface Paciente {
 @Injectable({ providedIn: 'root' })
 export class PacienteService {
   private apiUrl = 'https://clinica-backend-nzqw.onrender.com/api/pacientes';
-
 
   constructor(private http: HttpClient) { }
 

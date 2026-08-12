@@ -14,7 +14,20 @@ export interface Medico {
 export class MedicoService {
   private apiUrl = 'https://clinica-backend-nzqw.onrender.com/api/medicos';
   constructor(private http: HttpClient) { }
+
   getMedicos(): Observable<Medico[]> {
     return this.http.get<Medico[]>(this.apiUrl);
+  }
+
+  createMedico(medico: Medico): Observable<Medico> {
+    return this.http.post<Medico>(this.apiUrl, medico);
+  }
+
+  updateMedico(id: number, medico: Medico): Observable<Medico> {
+    return this.http.put<Medico>(`${this.apiUrl}/${id}`, medico);
+  }
+
+  deleteMedico(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

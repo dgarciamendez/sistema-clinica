@@ -13,7 +13,20 @@ export interface Medicamento {
 export class MedicamentoService {
   private apiUrl = 'https://clinica-backend-nzqw.onrender.com/api/medicamentos';
   constructor(private http: HttpClient) { }
+
   getMedicamentos(): Observable<Medicamento[]> {
     return this.http.get<Medicamento[]>(this.apiUrl);
+  }
+
+  createMedicamento(medicamento: Medicamento): Observable<Medicamento> {
+    return this.http.post<Medicamento>(this.apiUrl, medicamento);
+  }
+
+  updateMedicamento(id: number, medicamento: Medicamento): Observable<Medicamento> {
+    return this.http.put<Medicamento>(`${this.apiUrl}/${id}`, medicamento);
+  }
+
+  deleteMedicamento(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
